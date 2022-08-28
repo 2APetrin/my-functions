@@ -8,7 +8,7 @@ int my_puts(char *str)
         return -1;
 }
 
-char *my_strchr(const char *str, int ch)
+char * my_strchr(const char *str, int ch)
 {
     int i = 0;
     char* ret = NULL;
@@ -34,7 +34,7 @@ size_t my_strlen(const char *str)
     return i;
 }
 
-char *my_strcpy(char *dest, const char *str)
+char * my_strcpy(char *dest, const char *str)
 {
     int i = 0;
 
