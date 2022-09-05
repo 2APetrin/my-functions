@@ -98,7 +98,7 @@ char * my_fgets(char * str, int num, FILE * stream)
 
     while ((ch = getc(stream)) != EOF and ch != '\n' and i < (num - 1))
     {
-        str[i] = (char)ch;
+        *(str + i) = (char)ch;
         i++;
     }
 
@@ -122,7 +122,7 @@ char * my_fgets(char * str, int num, FILE * stream)
     }
     else
     {
-        str[i] = 0;
+        *(str + i) = 0;
         return str;
     }
 }
@@ -135,7 +135,12 @@ char * my_strdup(const char * str)
 
     if (copy_str != NULL)
     {
-        int i = my_strlen(str);
+        int i = 0;
+        while (*(str + i) != 0)
+        {
+            *(copy_str + i) = *(str + i);
+            i++;
+        }
 
         *(copy_str + i) = 0;
 
@@ -181,14 +186,14 @@ size_t my_getline(char **lineptr, size_t *n, FILE *stream)
 
     while ((ch = getc(stream)) != '\n' and ch != EOF)
     {
-        *(lineptr[c]) = (char) ch;
+        *(*lineptr + c) = (char) ch;
         c++;
     }
 
     if (ch == EOF)
         return -1;
 
-    *(lineptr[c]) = (char) ch;
+    *(*lineptr + c) = (char) ch;
 
     return i;
 }
