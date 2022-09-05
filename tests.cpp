@@ -83,7 +83,7 @@ void my_getline_test(void)
 {
     if((fp = fopen("file2.txt", "r")) != NULL)
     {
-        line = (char*) malloc(len);
+        //line = (char*) malloc(len);
         num = my_getline(&line, &len, fp);
         printf("%u bytes\n", len);
         printf("your line with %d symbols is: %s", num, line);
